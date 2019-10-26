@@ -71,11 +71,12 @@ public class Logic {
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = true;
+        int caunt = 0;
         for (int index = 0; index < table.length; index++) {
             if (table[index][index] == 1) {
                 for (int i = 0;i < table.length; i++) {
-                    if (table[i][index] == 1) {
-                    } else if (table[index][i] == 1) {
+                    if (table[i][index] == 1 || table[index][i] == 1) {
+                        caunt++;
                     } else { result = false;
                         break;}
                 }
