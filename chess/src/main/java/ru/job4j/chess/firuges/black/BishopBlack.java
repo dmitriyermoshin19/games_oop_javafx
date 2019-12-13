@@ -35,14 +35,9 @@ public class BishopBlack implements Figure {
         int deltaX = Integer.compare(dest.x,source.x);
         int deltaY = Integer.compare(dest.y,source.y);
         for (int index = 0; index < size; index++) {
-            int newX = source.x + deltaX * (index + 1);
-            int newY = source.y + deltaY * (index + 1);
-            for (Cell c : Cell.values()) {
-                if (newX == c.x && newY == c.y) {
-                    steps[index] = c;
-                    break;
-                }
-            }
+            int x = source.x + deltaX * (index + 1);
+            int y = source.y + deltaY * (index + 1);
+            steps[index] = Cell.find(x, y);
         }
         return steps;
     }
@@ -56,25 +51,4 @@ public class BishopBlack implements Figure {
         return new BishopBlack(dest);
     }
 
-
-    public static void main(String[] args) {
-        Cell dest = Cell.C1;
-        Cell source = Cell.G5;
-        int size = Math.abs(source.x - dest.x);
-        Cell[] steps = new Cell[size];
-        int deltaX = Integer.compare(dest.x,source.x);
-        int deltaY = Integer.compare(dest.y,source.y);
-        for (int index = 0; index < size; index++) {
-            int newX = source.x + deltaX * (index + 1);
-            int newY = source.y + deltaY * (index + 1);
-            for (Cell c : Cell.values()) {
-                if (newX == c.x && newY == c.y) {
-                    steps[index] = c;
-                }
-            }
-        }
-
-            System.out.println(Arrays.toString(steps));
-
-    }
 }
